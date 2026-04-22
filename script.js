@@ -5,8 +5,8 @@ function cardImage(n) {
 }
 
 const levels = [
-    { label: '5 PT', px: 20 },
-    { label: '4 PT', px: 12 },
+    { label: '5 PT', px: 15 },
+    { label: '4 PT', px: 10 },
     { label: '3 PT', px: 6 },
     { label: '2 PT', px: 2 },
     { label: '1 PT', px: 0 },
