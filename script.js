@@ -20,7 +20,7 @@ const viewName = document.getElementById('viewCardName');
 const btnGroup = document.getElementById('btnGroup');
 const statusEl = document.getElementById('status');
 
-// Build number grid
+
 const grid = document.getElementById('numGrid');
 for (let i = 1; i <= TOTAL_CARDS; i++) {
     const btn = document.createElement('button');
@@ -30,7 +30,7 @@ for (let i = 1; i <= TOTAL_CARDS; i++) {
     grid.appendChild(btn);
 }
 
-// Build blur buttons
+
 levels.forEach(({ label, px }, i) => {
     const btn = document.createElement('button');
     btn.className = 'blur-btn';
@@ -42,17 +42,18 @@ levels.forEach(({ label, px }, i) => {
             b.classList.toggle('active', j === i)
         );
     });
-    if (i === levels.length - 1) btn.classList.add('active');
+    if (i === 0) btn.classList.add('active');
     btnGroup.appendChild(btn);
 });
 
 function openCard(n) {
     viewName.textContent = `Card #${n}`;
     cardImg.src = cardImage(n);
-    cardImg.style.filter = 'blur(0px)';
-    statusEl.textContent = 'Point value: 1 PT';
+    // Default to 5 PT (most blur)
+    cardImg.style.filter = `blur(${levels[0].px}px)`;
+    statusEl.textContent = 'Point value: 5 PT';
     document.querySelectorAll('.blur-btn').forEach((b, j) =>
-        b.classList.toggle('active', j === levels.length - 1)
+        b.classList.toggle('active', j === 0)
     );
     screenPick.classList.add('hide');
     screenView.classList.add('show');
