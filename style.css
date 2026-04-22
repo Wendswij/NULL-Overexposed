@@ -1,0 +1,285 @@
+    *,
+    *::before,
+    *::after {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+    }
+
+    :root {
+        --ink: #1e2340;
+        --bg: #eeeae1;
+        --muted: #8a8d9a;
+        --border: rgba(30, 35, 64, 0.18);
+        --sat: env(safe-area-inset-top, 0px);
+        --sab: env(safe-area-inset-bottom, 0px);
+        --sal: env(safe-area-inset-left, 0px);
+        --sar: env(safe-area-inset-right, 0px);
+    }
+
+    html {
+        height: 100%;
+        -webkit-text-size-adjust: 100%;
+        text-size-adjust: 100%;
+    }
+
+    body {
+        height: 100%;
+        background: var(--bg);
+        font-family: 'Share Tech Mono', monospace;
+        color: var(--ink);
+        overflow: hidden;
+        overscroll-behavior: none;
+        -webkit-tap-highlight-color: transparent;
+    }
+
+    /* ─── SCREENS ─────────────────────────────── */
+    .screen {
+        position: fixed;
+        inset: 0;
+        display: flex;
+        flex-direction: column;
+        transition: transform 0.45s cubic-bezier(0.77, 0, 0.175, 1);
+        background: var(--bg);
+        padding-top: var(--sat);
+        padding-left: var(--sal);
+        padding-right: var(--sar);
+    }
+
+    #screen-pick {
+        transform: translateX(0);
+    }
+
+    #screen-view {
+        transform: translateX(100%);
+    }
+
+    #screen-pick.hide {
+        transform: translateX(-100%);
+    }
+
+    #screen-view.show {
+        transform: translateX(0);
+    }
+
+    /* ─── HEADER ──────────────────────────────── */
+    .header {
+        flex-shrink: 0;
+        padding: 20px 20px 14px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 5px;
+        border-bottom: 1px solid var(--border);
+    }
+
+    .logo-img {
+        width: 44px;
+        height: auto;
+    }
+
+    .game-title {
+        font-family: 'Arial Black', sans-serif;
+        font-weight: 900;
+        font-size: 22px;
+        letter-spacing: 0.06em;
+        color: var(--ink);
+    }
+
+    .header-sub {
+        font-size: 11px;
+        letter-spacing: 0.18em;
+        text-transform: uppercase;
+        color: var(--muted);
+    }
+
+    /* ─── PICK SCREEN — GRID ──────────────────── */
+    .grid-scroll {
+        flex: 1;
+        overflow-y: auto;
+        -webkit-overflow-scrolling: touch;
+        overscroll-behavior: contain;
+        padding: 14px;
+        padding-bottom: calc(20px + var(--sab));
+        scrollbar-width: none;
+    }
+
+    .grid-scroll::-webkit-scrollbar {
+        display: none;
+    }
+
+    .grid {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 10px;
+    }
+
+    .card-num-btn {
+        width: 100%;
+        height: 64px;
+        aspect-ratio: unset;
+        background: transparent;
+        border: 1.5px solid var(--ink);
+        border-radius: 14px;
+        font-family: 'Arial Black', sans-serif;
+        font-weight: 900;
+        font-size: 20px;
+        color: var(--ink);
+        cursor: pointer;
+        touch-action: manipulation;
+        transition: background 0.12s, color 0.12s, transform 0.1s;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        user-select: none;
+        -webkit-user-select: none;
+    }
+
+    .card-num-btn:active {
+        background: var(--ink);
+        color: var(--bg);
+        transform: scale(0.94);
+    }
+
+    /* ─── VIEW SCREEN ─────────────────────────── */
+    .view-header {
+        flex-shrink: 0;
+        padding: 16px 20px 14px;
+        display: flex;
+        align-items: center;
+        gap: 14px;
+        border-bottom: 1px solid var(--border);
+    }
+
+    .back-btn {
+        background: transparent;
+        border: 1.5px solid var(--ink);
+        border-radius: 50px;
+        min-width: 44px;
+        min-height: 44px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        cursor: pointer;
+        flex-shrink: 0;
+        touch-action: manipulation;
+        transition: background 0.12s, transform 0.1s;
+        user-select: none;
+        -webkit-user-select: none;
+    }
+
+    .back-btn:active {
+        background: var(--ink);
+        transform: scale(0.92);
+    }
+
+    .back-btn:active svg path {
+        stroke: var(--bg);
+    }
+
+    .back-btn svg {
+        width: 16px;
+        height: 16px;
+    }
+
+    .back-btn svg path {
+        stroke: var(--ink);
+        transition: stroke 0.12s;
+    }
+
+    .view-title-wrap {
+        display: flex;
+        flex-direction: column;
+        gap: 2px;
+    }
+
+    .view-card-label {
+        font-size: 11px;
+        letter-spacing: 0.18em;
+        text-transform: uppercase;
+        color: var(--muted);
+    }
+
+    .view-card-name {
+        font-family: 'Arial Black', sans-serif;
+        font-weight: 900;
+        font-size: 20px;
+        color: var(--ink);
+        letter-spacing: 0.04em;
+    }
+
+    .view-body {
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        gap: 20px;
+        padding: 16px 20px;
+        padding-bottom: calc(20px + var(--sab));
+        overflow: hidden;
+    }
+
+    .img-wrap {
+        position: relative;
+        width: min(240px, 65vw);
+        height: min(290px, 46vh);
+        flex-shrink: 0;
+    }
+
+    .card-img {
+        width: 100%;
+        height: 100%;
+        object-fit: contain;
+        filter: blur(0px);
+        transition: filter 0.45s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+
+    .btn-group {
+        display: flex;
+        gap: 8px;
+        width: 100%;
+        max-width: 400px;
+    }
+
+    .blur-btn {
+        flex: 1;
+        background: transparent;
+        border: 1.5px solid var(--ink);
+        color: var(--muted);
+        font-family: 'Share Tech Mono', monospace;
+        font-size: 12px;
+        letter-spacing: 0.06em;
+        text-transform: uppercase;
+        min-height: 44px;
+        padding: 0;
+        border-radius: 50px;
+        cursor: pointer;
+        touch-action: manipulation;
+        transition: background 0.15s, color 0.15s, transform 0.1s;
+        user-select: none;
+        -webkit-user-select: none;
+    }
+
+    .blur-btn:active {
+        transform: scale(0.95);
+    }
+
+    .blur-btn.active {
+        background: var(--ink);
+        color: var(--bg);
+    }
+
+    .status {
+        font-size: 11px;
+        letter-spacing: 0.18em;
+        text-transform: uppercase;
+        color: var(--muted);
+    }
+
+    .site-url {
+        font-size: 11px;
+        letter-spacing: 0.14em;
+        color: var(--muted);
+    }

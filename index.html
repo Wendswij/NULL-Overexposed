@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="default">
+  <title>OVEREXPOSED — Card Helper</title>
+  <link href="https://fonts.googleapis.com/css2?family=Share+Tech+Mono&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="style.css">
+
+</head>
+<body>
+
+  <div class="screen" id="screen-pick">
+    <div class="header">
+      <img class="logo-img" src="Image/logo.png" alt="NU:ll">
+      <div class="game-title">OVEREXPOSED</div>
+      <div class="header-sub">Select your card number</div>
+    </div>
+    <div class="grid-scroll">
+      <div class="grid" id="numGrid"></div>
+    </div>
+  </div>
+
+  <div class="screen" id="screen-view">
+    <div class="view-header">
+      <button class="back-btn" id="backBtn" aria-label="Back to card list">
+        <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M15 18l-6-6 6-6" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </button>
+      <div class="view-title-wrap">
+        <div class="view-card-label">You are holding</div>
+        <div class="view-card-name" id="viewCardName">Card #—</div>
+      </div>
+    </div>
+    <div class="view-body">
+      <div class="img-wrap">
+        <img class="card-img" id="cardImg" src="bunny.png" alt="card">
+      </div>
+      <div class="btn-group" id="btnGroup"></div>
+      <div class="status" id="status">Point value: 1 PT</div>
+      <div class="site-url">NULL.co</div>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+
+</body>
